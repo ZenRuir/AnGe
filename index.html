@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗格</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 引入图片预览插件的css min代表压缩版 -->
+    <link rel="stylesheet" href="css/viewer.min.css">
+</head>
+
+<body class="scroll-hidden">
+    <header>
+        <div class="header">
+            <div class="logo">
+                <a href="">
+                    <img src="images/logo.png" width="95" height="35" />
+                </a>
+            </div>
+            <ul class="header-nav">
+                <li class="nav-item active"><a href="#">首页</a></li>
+                <li class="nav-item"><a href="#">广场</a></li>
+                <li class="nav-item"><a href="#">情绪废料</a></li>
+                <li class="nav-item"><a href="#">消息</a></li>
+                <li class="nav-item"><a href="#">设置</a></li>
+                <li>
+                    <a href="#">
+                        <img src="images/my face.png" alt="" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="header-hr"></div>
+        <div class="banner">
+            <div class="banner-box">
+                <button class="banner-btn" data-type="left">
+                <svg t="1638154463780" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1069" width="42" height="42"><path d="M303.872 541.952c-7.68 0-15.36-2.944-21.12-8.704-11.648-11.648-11.648-30.592 0-42.24L699.008 74.624c11.648-11.648 30.592-11.648 42.24 0 11.648 11.648 11.648 30.592 0 42.24L324.992 533.12c-5.888 5.888-13.44 8.832-21.12 8.832z" p-id="1070"></path><path d="M720.128 958.208c-7.68 0-15.36-2.944-21.12-8.704L282.752 533.12c-11.648-11.648-11.648-30.592 0-42.24 11.648-11.648 30.592-11.648 42.24 0l416.256 416.256c11.648 11.648 11.648 30.592 0 42.24-5.76 5.888-13.44 8.832-21.12 8.832z" p-id="1071"></path></svg>
+            </button>
+                <button class="banner-btn" data-type="right">
+                <svg t="1638154488211" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1261" width="42" height="42"><path d="M720.128 541.952c7.68 0 15.36-2.944 21.12-8.704 11.648-11.648 11.648-30.592 0-42.24L324.992 74.624c-11.648-11.648-30.592-11.648-42.24 0-11.648 11.648-11.648 30.592 0 42.24l416.256 416.256c5.888 5.888 13.44 8.832 21.12 8.832z" p-id="1262"></path><path d="M303.872 958.208c7.68 0 15.36-2.944 21.12-8.704l416.256-416.256c11.648-11.648 11.648-30.592 0-42.24-11.648-11.648-30.592-11.648-42.24 0L282.752 907.136c-11.648 11.648-11.648 30.592 0 42.24 5.76 5.888 13.44 8.832 21.12 8.832z" p-id="1263"></path></svg>
+            </button>
+                <div class="banner-wrap"></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="attention-list">
+            <div class="attention-head">关注列表</div>
+            <ul class="attention-body">
+                <div class="attention-wrap scroll-hidden">
+                    <div class="attention-loader"></div>
+                </div>
+                <button id="list-fold">
+                    <svg t="1638168774462" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2594" width="36" height="36"><path d="M926.208 366.563328 512 605.70624 97.792 366.563328c-12.243968-7.069696-27.900928-2.875392-34.970624 9.3696-7.069696 12.243968-2.874368 27.900928 9.370624 34.9696l427.008 246.53312c3.960832 2.286592 8.380416 3.4304 12.8 3.4304s8.839168-1.143808 12.8-3.4304l427.008-246.53312c12.244992-7.068672 16.439296-22.725632 9.370624-34.9696C954.108928 363.68896 938.451968 359.494656 926.208 366.563328z" p-id="2595"></path></svg>
+                </button>
+            </ul>
+        </div>
+        <div id="tool-box">
+            <div class="tool-btn"></div>
+            <div class="tool-item tool-photo"></div>
+            <div class="tool-item tool-write"></div>
+            <div class="tool-item tool-delete"></div>
+        </div>
+        <div class="content-box">
+            <div class="content-wrap" id="viewer"></div>
+            <div id="posts-loader">点我刷新内容</div>
+        </div>
+        <button id="scroll-top"></button>
+    </main>
+    <footer>
+        <div class="footer-logo">
+            <img src="images/circleogo.png" alt="">
+        </div>
+        <div class="footer-content">
+            <div class="footer-wrap">
+                <ul class="footer-nav">
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">隐私协议</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">友情链接</a></li>
+                    <li><a href="#">用户协议</a></li>
+                    <li><a href="#">在线反馈</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">广告投放</a></li>
+                </ul>
+                <img src="./images/people.png" alt="页脚装饰图">
+            </div>
+            <span>Copyright © 2021 暗格 Ange.com 鄂ICP备16005435号-3 鄂公网安备 42018502001133号</span>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/data.js"></script>
+    <!-- 引入图片预览插件的js min代表压缩版 -->
+    <script src="js/viewer.min.js"></script>
+    <!-- 引入图片预览插件的jquery插件 -->
+    <script src="js/jquery-viewer.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

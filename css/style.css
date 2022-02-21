@@ -1,0 +1,853 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "苹方-简";
+}
+
+ul {
+    /* 默认列表样式去除 */
+    list-style: none;
+}
+
+a {
+    /* 下划线去除 */
+    text-decoration: none;
+    /* 设置默认字体颜色为黑色 */
+    color: #000;
+}
+
+html,
+body {
+    /*滚动条平缓移动*/
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url(../images/background.jpg);
+    /* 最小宽度 */
+    min-width: 1024px;
+}
+
+.visible {
+    /*显示*/
+    /* 透明度设置为1 */
+    opacity: 1 !important;
+    /* 元素是否可见 设置可见(相关事件也可以使用) */
+    visibility: visible !important;
+}
+
+.scroll-hidden {
+    /*Firefox滚动条隐藏*/
+    scrollbar-width: none;
+}
+
+.scroll-hidden::-webkit-scrollbar {
+    /*Chrome滚动条隐藏*/
+    width: 0;
+    height: 0;
+}
+
+.header {
+    /* 内边距复合写法 */
+    padding: 0 25px;
+    padding-top: 10px;
+    /* 对溢出内容隐藏， 还能解决浮动塌陷*/
+    overflow: hidden;
+}
+
+button {
+    /* 按钮点击时的轮廓去除 */
+    outline: none;
+    /* 按钮默认边框去除 */
+    border: none;
+    /* 按钮默认背景色设置为透明 */
+    background-color: transparent;
+}
+
+cite {
+    display: block;
+    font-style: normal;
+    text-align: right;
+}
+
+.img-box {
+    background-color: #fff;
+}
+
+.img-box>img {
+    /* 设置在div中的img默认宽高等于容器 */
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.logo {
+    /* 左浮动 */
+    float: left;
+}
+
+.logo>img {
+    width: 95px;
+    height: 35px;
+}
+
+.header-nav {
+    /* 右浮动 */
+    float: right;
+}
+
+.header-nav>li {
+    /* 行内块 */
+    display: inline-block;
+}
+
+.header-nav>li img {
+    width: 42px;
+    height: 42px;
+}
+
+.header-nav>.nav-item {
+    /* 让每一个item的左右外边距为8px*/
+    /* 外边距复合写法 */
+    margin: 0 8px;
+    /* 用内边距撑开元素内容*/
+    padding: 5.6px 16px;
+    border-radius: 2px;
+    /* 鼠标悬浮样式，设置为手指*/
+    cursor: pointer;
+    /*过渡属性，设置背景颜色过渡0.35秒*/
+    transition: background-color .35s;
+}
+
+.header-nav>.nav-item>a {
+    /*过渡属性，设置字体颜色过渡0.35秒*/
+    transition: color .35s;
+}
+
+
+/*hover：鼠标悬浮到该元素时触发*/
+
+.header-nav>.nav-item:hover {
+    background-color: rgba(0, 0, 0, .15);
+}
+
+.nav-item.active {
+    /* 当导航按钮选中时修改背景色，设置权限为最大是为了不让hover修改背景色 */
+    background-color: black !important;
+}
+
+.nav-item.active>a {
+    color: white;
+}
+
+
+/*last-child：子元素选择器，选择最后一个子元素*/
+
+.header-nav>li:last-child {
+    margin: 0 1rem;
+    /*垂直排列样式，让旁边文字垂直方向居中排列*/
+    vertical-align: middle;
+}
+
+.header-hr {
+    height: 14px;
+    background-image: url(../images/line.png);
+    /* 设置背景图片大小等于div容器大小 */
+    background-size: 100% 100%;
+}
+
+.banner {
+    margin-top: 20px;
+}
+
+.banner-box {
+    /* 相对定位。
+    当子元素使用绝对定位时,若父元素没有进行定位,
+    则子元素会一直往上找拥有定位的祖父元素,然后相对与该元素进行定位,
+    所以一般要为进行绝对定位的子元素的父元素进行相对定位 */
+    position: relative;
+    width: 82%;
+    max-width: 960px;
+    height: 320px;
+    /* margin: 0 auto 左右外边距自动填充,达到左右居中效果 */
+    margin: 0 auto;
+    padding: 25px 0;
+    padding-top: 50px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, .45);
+}
+
+.banner-box>button {
+    /* 绝对定位,相对于拥有定位的父类元素进行定位*/
+    position: absolute;
+    height: 42px;
+    top: 0;
+    bottom: 0;
+    /*  margin: auto 上下左右外边距自动填充,因为left与right没有初始值,所以左右居中不会生效 */
+    margin: auto;
+}
+
+.banner-box>button,
+.attention-body>#list-fold {
+    fill: rgb(161, 161, 161);
+    cursor: pointer;
+}
+
+
+/* :active 鼠标按下该元素时触发  */
+
+.banner-box>button:active,
+.attention-body>#list-fold:active {
+    /* fill 用于修改svg元素背景色   */
+    fill: rgb(185, 195, 204)
+}
+
+
+/* 自定义属性 ，方便JavaScript操作 */
+
+.banner-btn[data-type=left] {
+    left: 20px;
+}
+
+.banner-btn[data-type=right] {
+    right: 20px;
+}
+
+.banner-line {
+    /* 让宽度等于内容宽度,不然块元素默认宽度100%,外边距自动失效,
+    但也不能设置为固定值,不然子元素超出会显示异常,所以让宽度等于内容宽度 */
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.banner-line>.line-item {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: 5px;
+    border-radius: 50%;
+    border: 1.5px solid #000;
+    cursor: pointer;
+    /* 所有支持过渡的属性都设置过渡0.35秒 */
+    transition: all .35s;
+}
+
+.banner-line>.line-item.active {
+    width: 45px;
+    height: 5px;
+    vertical-align: middle;
+    border-radius: 25px;
+    background-color: #000;
+}
+
+.banner-wrap {
+    position: relative;
+    width: 84%;
+    height: 94%;
+    margin: auto;
+}
+
+.banner-wrap>.banner-item {
+    position: absolute;
+    width: 100%;
+    max-width: 706px;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity .5s, z-index .5s;
+}
+
+.banner-wrap>.banner-item.active {
+    opacity: 1;
+    z-index: 9;
+    transition: opacity .35s ease-in-out .5s, z-index .35s .5s;
+}
+
+.banner-item>div {
+    float: left;
+    transition: transform .5s;
+}
+
+.banner-item.active>div {
+    /* css变形 */
+    transform: translateY(0);
+    transition: transform .5s .35s;
+}
+
+.banner-content-left {
+    width: 55%;
+    height: 100%;
+    transform: translateY(-110%);
+}
+
+.banner-content-left>img {
+    width: 95%;
+    height: 95%;
+    border-radius: 15px;
+    /* 利用盒阴影制作头像阴影 */
+    box-shadow: 12px 12px 0 rgb(185, 195, 204);
+}
+
+.banner-content-right {
+    position: relative;
+    z-index: 2;
+    width: 45%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 35px 55px;
+    padding-right: 16px;
+    border-radius: 15px;
+    background-color: #fff;
+    transform: translateY(100%);
+}
+
+
+/*::after与::before都为伪元素,在dom节点渲染时添加上去一个节点,但该节点并不是文档节点,无法通过JavaScript操作 */
+
+.banner-content-right::before {
+    /* 利用伪元素制造箭头效果 */
+    content: "";
+    position: absolute;
+    top: -48px;
+    bottom: 0;
+    height: 24px;
+    margin: auto;
+    left: -19%;
+    border-style: solid;
+    border-color: transparent#fff transparent transparent;
+    border-width: 18px 41px;
+}
+
+.banner-head-photo {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    vertical-align: middle;
+    box-shadow: -12px -6px 0 rgb(161, 161, 161);
+}
+
+.banner-head-name {
+    padding-left: 10px;
+}
+
+.banner-content-body {
+    padding-top: 20px;
+}
+
+.op-detail>div {
+    display: inline-block;
+    margin-left: 16px;
+}
+
+.op-detail>div>button {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    /*  设置背景图片大小为正好覆盖容器的大小*/
+    background-size: cover;
+    transition: background-image .35s;
+}
+
+.op-detail>.like>button {
+    background-image: url(../images/like.svg);
+}
+
+.op-detail>.like>button.active {
+    /* 动画属性,用于点赞动画 */
+    animation: like .4s;
+    background-image: url(../images/_like.svg);
+}
+
+.op-detail>.comment>button {
+    background-image: url(../images/comment.svg);
+}
+
+.op-detail>.share>button {
+    background-image: url(../images/share.svg);
+}
+
+.banner-detail {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+}
+
+main {
+    padding: 36px 0;
+    border-bottom: 4px solid rgb(203, 206, 211);
+}
+
+main::after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: left;
+    visibility: hidden;
+}
+
+.attention-list {
+    min-width: 4%;
+    max-width: 8%;
+    margin-left: 3.5%;
+    float: left;
+    padding-left: 16px;
+    padding-right: 4px;
+}
+
+.attention-head,
+footer {
+    position: relative;
+}
+
+.attention-head::before {
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 100%;
+    left: -16px;
+    border-radius: 5px;
+    background-color: #000;
+}
+
+.attention-body {
+    min-height: 50px;
+    margin-top: 16px;
+    border-radius: 10px;
+    padding: 25px 0;
+    background-color: #f3f3f3;
+}
+
+.attention-wrap {
+    max-height: 308px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+.attention-loader,
+.attention-wrap>.user-item {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.attention-wrap>.user-item {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.attention-loader {
+    background-image: url(../images/loading.png);
+    background-size: 80% 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.attention-wrap>.user-item:hover {
+    box-sizing: border-box;
+    border: 1.5px solid skyblue;
+}
+
+.attention-wrap>.user-item:last-child {
+    margin-bottom: 0;
+}
+
+.attention-wrap>.user-item.unread::after {
+    position: absolute;
+    content: "";
+    width: 6.5px;
+    height: 6.5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: -10px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.attention-body>#list-fold {
+    display: block;
+    height: 24px;
+    margin: 0 auto;
+    margin-top: 16px;
+    overflow: hidden;
+}
+
+.attention-body>#list-fold>svg {
+    margin-top: -6px;
+}
+
+.content-box {
+    position: relative;
+    width: 70%;
+    margin: auto;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 35px;
+    padding-bottom: 54px;
+    padding-left: 50px;
+    background-color: #fff;
+}
+
+#posts-loader {
+    position: absolute;
+    width: fit-content;
+    padding: 4px 24px;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(78, 78, 78);
+    letter-spacing: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    /* 用户选择 设置为用户不可选择(不能选中，复制与拖拽) */
+    user-select: none;
+    background-color: rgb(235, 235, 235);
+}
+
+
+/* on=loader 自定义属性，你可以不用管，我是用来做加载效果的 */
+
+#posts-loader[on=loader]::after {
+    content: "";
+    animation: loader 3s;
+}
+
+.posts {
+    margin-bottom: 36px;
+}
+
+.posts-head>div {
+    display: inline-block;
+}
+
+.posts-photo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+
+.posts-info {
+    margin-left: 16px;
+}
+
+.posts-info>span {
+    display: block;
+}
+
+.posts-info>.posts-name {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.posts-info>.posts-time {
+    font-size: 12px;
+    text-indent: 8px;
+    letter-spacing: 1px;
+    color: rgb(155, 155, 155);
+}
+
+.posts-body {
+    width: fit-content;
+    margin-left: 55px;
+    margin-top: 16px;
+    padding: 25px;
+    padding-right: 32px;
+    padding-top: 15px;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    background-color: rgb(231, 231, 232);
+}
+
+.posts-wrap {
+    margin-bottom: 24px;
+}
+
+.posts-title {
+    font-size: 20px;
+}
+
+.posts-cite {
+    font-size: 18px;
+}
+
+.posts-content {
+    padding: 12px 0;
+    color: rgb(134, 134, 134);
+    font: 13px/21px Arial, sans-serif;
+}
+
+.posts-images>img {
+    width: 120px;
+    height: 120px;
+}
+
+.posts-video {
+    position: relative;
+    width: 320px;
+    height: 180px;
+    background-color: rgba(255, 255, 255, .45);
+}
+
+.posts-video>video {
+    width: 100%;
+    height: 100%;
+}
+
+.video-mask {
+    position: absolute;
+    /* 弹性布局 用于居中svg播放图片，你不用管 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .5);
+    transition: opacity .35s, visibility .35s;
+}
+
+.video-mask[open] {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.posts-detail {
+    width: fit-content;
+    margin-left: 16px;
+}
+
+.posts-detail>div>button {
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.posts-detail>div>span {
+    display: inline-block;
+    min-width: 32px;
+}
+
+#tool-box {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    float: right;
+    transform: rotate(-180deg);
+    margin-right: 50px;
+    transition: transform .35s;
+}
+
+#tool-box.open {
+    transform: rotate(0deg);
+}
+
+#tool-box>div {
+    cursor: pointer;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+#tool-box>.tool-btn {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    transform: rotate(180deg);
+    background-image: url(../images/button.png);
+    background-color: rgb(240, 241, 244);
+}
+
+#tool-box>.tool-btn:active {
+    transform: scale(0.95);
+}
+
+#tool-box>.tool-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    left: 0;
+    top: 0;
+    background-size: 66.6% 66.6%;
+    /* 背景定位上下左右居中 */
+    background-position: center center;
+    /* 背景重复设置 不重复 */
+    background-repeat: no-repeat;
+    /* 盒阴影 inset 内阴影 0 0 x,y轴偏移0px 5px 阴影扩散半径 2px 阴影大小 #fff阴影颜色为白色 */
+    box-shadow: inset 0 0 5px 2px #fff;
+    transition: transform .35s, left .35s, top .35s;
+}
+
+#tool-box.open>.tool-item {
+    transform: scale(1.5);
+}
+
+#tool-box>.tool-photo {
+    background-image: url(../images/photo.svg);
+}
+
+#tool-box>.tool-write {
+    background-image: url(../images/write.svg);
+}
+
+#tool-box>.tool-delete {
+    background-image: url(../images/delete.svg);
+}
+
+#tool-box.open>.tool-item:nth-child(2) {
+    left: -13px;
+    top: -49px;
+}
+
+#tool-box.open>.tool-item:nth-child(3) {
+    left: -51px;
+}
+
+#tool-box.open>.tool-item:nth-child(4) {
+    left: -13px;
+    top: 49px;
+}
+
+#scroll-top {
+    /* 固定定位,相对与浏览器定位 */
+    position: fixed;
+    width: 48px;
+    height: 36px;
+    right: 64px;
+    bottom: 64px;
+    border-radius: 10px;
+    box-shadow: 0 0 1.5px #333;
+    /* 设置定位层级 */
+    z-index: 99;
+    cursor: pointer;
+    /* 透明度为0  */
+    opacity: 0;
+    /* 元素是否可见 设置隐藏(相关JavaScript事件不可用) */
+    visibility: hidden;
+    /* 过渡透明度与可见性效果0.35秒 */
+    transition: opacity .35s, visibility .35s;
+    background-image: url(../images/TOP.png);
+    background-size: cover;
+}
+
+footer {
+    padding-top: 24px;
+}
+
+.footer-logo {
+    position: absolute;
+    top: 20%;
+    left: 6%;
+}
+
+.footer-logo>img {
+    width: 64px;
+    height: 64px;
+}
+
+.footer-content {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.footer-content>.footer-wrap {
+    position: relative;
+    height: 180px;
+}
+
+.footer-content>.footer-wrap>ul {
+    position: absolute;
+    width: 320px;
+    height: fit-content;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.footer-wrap>ul>li {
+    float: left;
+    width: 160px;
+    text-align: center;
+    padding: 8px 0;
+}
+
+.footer-wrap>ul>li>a {
+    color: #666;
+}
+
+.footer-wrap>ul>li>a:hover {
+    color: unset;
+}
+
+.footer-wrap>img {
+    float: right;
+    width: 300px;
+    height: 100%;
+}
+
+.footer-content>span {
+    display: block;
+    padding: 24px 0;
+    text-align: center;
+}
+
+
+/* 动画 */
+
+@keyframes like {
+    75% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes bannerT {
+    0% {
+        transform: translateY(-110%)
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+
+@keyframes bannerB {
+    0% {
+        transform: translateY(110%)
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+
+@keyframes loader {
+    0% {
+        content: "";
+    }
+    33% {
+        content: ".";
+    }
+    66% {
+        content: "..";
+    }
+    100% {
+        content: "...";
+    }
+}
