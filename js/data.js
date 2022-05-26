@@ -1,5 +1,5 @@
 function getUrl(url){
-return "https://cdn.jsdelivr.net/gh/ZenRuir/AnGe@main/"+url;
+return "https://fastly.jsdelivr.net/gh/ZenRuir/AnGe@main/"+url;
 }
 var contentData = [{
         info: {
